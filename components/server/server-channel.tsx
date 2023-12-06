@@ -25,6 +25,7 @@ export const ServerChannel = ({
   server,
   role,
 }: ServerChannelProps) => {
+  const { onOpen } = useModal();
   const params = useParams();
   const router = useRouter();
 
@@ -52,13 +53,13 @@ export const ServerChannel = ({
         <div className="ml-auto flex items-center gap-x-2">
           <ActionTooltip label="Edit">
             <Edit
-              // onClick={(e) => onAction(e, "editChannel")}
+              onClick={(e) => onOpen("editChannel", { server, channel })}
               className="hidden group-hover:block w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
             />
           </ActionTooltip>
           <ActionTooltip label="Delete">
             <Trash
-              //   onClick={(e) => onAction(e, "deleteChannel")}
+              onClick={(e) => onOpen("deleteChannel", { server, channel })}
               className="hidden group-hover:block w-4 h-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
             />
           </ActionTooltip>
